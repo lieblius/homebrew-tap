@@ -11,12 +11,20 @@ class GitAiCommit < Formula
   depends_on "python@3.11"
   depends_on "nvim"
 
+  resource "anthropic" do
+    url "https://files.pythonhosted.org/packages/15/74/2b2485fc120da834c0c5be07462541ec082e9fa8851d845f2587e480535a/anthropic-0.45.2.tar.gz"
+    sha256 "32a18b9ecd12c91b2be4cae6ca2ab46a06937b5aa01b21308d97a6d29794fb5e"
+  end
+
   def install
-    # Make the installation less dependent on specific resource hashes
+    # Create virtual environment
     venv = virtualenv_create(libexec, "python3.11")
-    system "poetry", "export", "--without-hashes", "-f", "requirements.txt", "-o", "requirements.txt"
+    
+    # Install anthropic directly
+    venv.pip_install resource("anthropic")
+    
+    # Install the package
     venv.pip_install_and_link buildpath
-    venv.pip_install "anthropic"
   end
 
   def caveats
