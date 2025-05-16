@@ -12,8 +12,12 @@ class GitAiCommit < Formula
   depends_on "nvim"
 
   def install
+    # Create requirements file with just anthropic
+    (buildpath/"requirements.txt").write("anthropic==0.45.2\n")
+    
+    # Create virtual environment and install everything with pip
     venv = virtualenv_create(libexec, "python3.11")
-    venv.pip_install "anthropic==0.45.2"
+    venv.pip_install "-r", buildpath/"requirements.txt"
     venv.pip_install_and_link buildpath
   end
 
