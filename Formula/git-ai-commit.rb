@@ -13,11 +13,7 @@ class GitAiCommit < Formula
 
   def install
     venv = virtualenv_create(libexec, "python3.11")
-    
-    # Install anthropic with all its dependencies
-    system "#{libexec}/bin/pip", "install", "anthropic==0.45.2"
-    
-    # Install the package
+    venv.pip_install "anthropic==0.45.2"
     venv.pip_install_and_link buildpath
   end
 
