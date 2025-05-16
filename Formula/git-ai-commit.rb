@@ -11,28 +11,11 @@ class GitAiCommit < Formula
   depends_on "python@3.11"
   depends_on "nvim"
 
-  resource "anthropic" do
-    url "https://files.pythonhosted.org/packages/15/74/2b2485fc120da834c0c5be07462541ec082e9fa8851d845f2587e480535a/anthropic-0.45.2.tar.gz"
-    sha256 "32a18b9ecd12c91b2be4cae6ca2ab46a06937b5aa01b21308d97a6d29794fb5e"
-  end
-  
-  resource "typing-extensions" do
-    url "https://files.pythonhosted.org/packages/0c/1d/eb26f5e75100d531d7399ae800814b069bc2ed2a7410834d57374d010d96/typing_extensions-4.9.0.tar.gz"
-    sha256 "23478f88c37f27d76ac8aee6c905017a143b0b1b886c3c9f66bc2fd94f9f5783"
-  end
-
   def install
     venv = virtualenv_create(libexec, "python3.11")
     
-    # Install dependencies manually
-    resources.each do |r|
-      venv.pip_install r
-    end
-    
-    # Install additional dependencies that anthropic needs
-    venv.pip_install "anyio"
-    venv.pip_install "httpx"
-    venv.pip_install "pydantic"
+    # Install anthropic with all its dependencies
+    system "#{libexec}/bin/pip", "install", "anthropic==0.45.2"
     
     # Install the package
     venv.pip_install_and_link buildpath
