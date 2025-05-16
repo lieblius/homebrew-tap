@@ -12,8 +12,8 @@ class GitAiCommit < Formula
   depends_on "nvim"
 
   resource "anthropic" do
-    url "https://files.pythonhosted.org/packages/3e/5c/b8fb1e7e851e7aebb39b1c04161ed5231cb0390b0c3e93d9f5fca5fb2d5b/anthropic-0.45.2.tar.gz"
-    sha256 "69a3cfca1c85ca1d8c8b7605db3d21e506e4a5144ea8ccf79acaa93d41b5c99b"
+    url "https://files.pythonhosted.org/packages/15/74/2b2485fc120da834c0c5be07462541ec082e9fa8851d845f2587e480535a/anthropic-0.45.2.tar.gz"
+    sha256 "32a18b9ecd12c91b2be4cae6ca2ab46a06937b5aa01b21308d97a6d29794fb5e"
   end
 
   def install
