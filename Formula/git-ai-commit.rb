@@ -4,7 +4,7 @@ class GitAiCommit < Formula
   desc "AI-powered git commit message generator using Claude"
   homepage "https://github.com/lieblius/git-ai-commit"
   url "https://github.com/lieblius/git-ai-commit/archive/refs/tags/0.0.1.tar.gz"
-  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  sha256 "fdc8f9adbb66987eab240fcd773303189860e43722192be0c2f8a3692b1daa45"
   license "MIT"
 
   depends_on "poetry" => :build
