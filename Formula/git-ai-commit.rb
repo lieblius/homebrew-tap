@@ -11,6 +11,11 @@ class GitAiCommit < Formula
   depends_on "python@3.11"
   depends_on "nvim"
 
+  resource "anthropic" do
+    url "https://files.pythonhosted.org/packages/3e/5c/b8fb1e7e851e7aebb39b1c04161ed5231cb0390b0c3e93d9f5fca5fb2d5b/anthropic-0.45.2.tar.gz"
+    sha256 "69a3cfca1c85ca1d8c8b7605db3d21e506e4a5144ea8ccf79acaa93d41b5c99b"
+  end
+
   def install
     virtualenv_create(libexec, "python3.11")
     system "poetry", "build", "--format=wheel"
